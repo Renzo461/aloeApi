@@ -1,8 +1,20 @@
 const express = require('express')
-const { connection } = require('./conexion.js')
-const knex = require('knex')(connection)
-// const games = require('./routes/games')
-// const cart = require('./routes/cart')
+const actuador = require('./routes/actuador')
+const actuadorestacion = require('./routes/actuadorestacion')
+const eca = require('./routes/eca')
+const estacionbase = require('./routes/estacionbase')
+const estado = require('./routes/estado')
+const fabrica = require('./routes/fabrica')
+const modeloestacion = require('./routes/modeloestacion')
+const nivelbateria = require('./routes/nivelbateria')
+const nodo = require('./routes/nodo')
+const placa = require('./routes/placa')
+const proyectoconstruccion = require('./routes/proyectoconstruccion')
+const reporteincidente = require('./routes/reporteincidente')
+const tipoactuador = require('./routes/tipoactuador')
+const tipoeca = require('./routes/tipoeca')
+const tipousuario = require('./routes/tipousuario')
+const usuario = require('./routes/usuario')
 
 const app = express()
 const PORT = 4040
@@ -16,25 +28,23 @@ app.use(function (req, res, next) {
   res.header('Access-Control-Allow-Headers', 'Content-Type');
   next();
 })
-// app.use('/api/games', games)
-// app.use('/api/cart', cart)
+
 app.listen(PORT, () => {
   console.log(`Server runnig at port ${PORT}`)
 })
-app.get("/", (req, res) => {
-  knex.from("estacionBase").select("*")
-    .then(r => res.json(r))
-})
-app.get("/:id", (req, res) => {
-  const id = req.params.id;
-  knex.from("estacionBase").select("*").where('ebId', id)
-    .then(r => res.json(r))
-})
-
-// app.post("/", (req, res) => {
-//   const id = req.body;
-//   knex("estacionBase").insert({
-
-//   })
-//     .then(r => res.json(r))
-// })
+app.use('/actuador', actuador)
+app.use('/actuadorestacion', actuadorestacion)
+app.use('/eca', eca)
+app.use('/estacionbase', estacionbase)
+app.use('/estado', estado)
+app.use('/fabrica', fabrica)
+app.use('/modeloestacion', modeloestacion)
+app.use('/nivelbateria', nivelbateria)
+app.use('/nodo', nodo)
+app.use('/placa', placa)
+app.use('/proyectoconstruccion', proyectoconstruccion)
+app.use('/reporteincidente', reporteincidente)
+app.use('/tipoactuador', tipoactuador)
+app.use('/tipoeca', tipoeca)
+app.use('/tipousuario', tipousuario)
+app.use('/usuario', usuario)

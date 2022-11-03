@@ -1,10 +1,11 @@
 const connection = {
-    client: 'mysql',
+    client: 'mysql2',
     connection: {
-        host: '127.0.0.1',
-        user: 'root',
-        password: '',
-        database: 'aloe'
+        host: 'sql10.freesqldatabase.com',
+        port: 3306,
+        user: 'sql10536458',
+        password: 'zemzg3kDgJ',
+        database: 'sql10536458',
     }
 }
 module.exports = {
