@@ -21,15 +21,61 @@ app.use(function (req, res, next) {
 app.listen(PORT, () => {
   console.log(`Server runnig at port ${PORT}`)
 })
-app.get("/", (req, res) => {
-  knex.from("estacionBase").select("*")
+app.get("/tipoeca", (req, res) => {
+  knex.from("tipoeca").select("*")
     .then(r => res.json(r))
 })
-app.get("/:id", (req, res) => {
+app.get("/tipoeca/:id", (req, res) => {
   const id = req.params.id;
-  knex.from("estacionBase").select("*").where('ebId', id)
+  knex.from("tipoeca").select("*").where('id', id)
     .then(r => res.json(r))
 })
+app.get("/eca", (req, res) => {
+  knex.from("eca").select("*")
+    .then(r => res.json(r))
+})
+app.get("/eca/:id", (req, res) => {
+  const id = req.params.id;
+  knex.from("eca").select("*").where('id', id)
+    .then(r => res.json(r))
+})
+app.get("/fabrica", (req, res) => {
+  knex.from("fabrica").select("*")
+    .then(r => res.json(r))
+})
+app.get("/fabrica/:ruc", (req, res) => {
+  const id = req.params.id;
+  knex.from("fabrica").select("*").where('id', id)
+    .then(r => res.json(r))
+})
+app.get("/tipousuario", (req, res) => {
+  knex.from("tipousuario").select("*")
+    .then(r => res.json(r))
+})
+app.get("/tipousuario/:id", (req, res) => {
+  const id = req.params.id;
+  knex.from("tipousuario").select("*").where('id', id)
+    .then(r => res.json(r))
+})
+app.get("/usuario", (req, res) => {
+  knex.from("usuario").select("*")
+    .then(r => res.json(r))
+})
+app.get("/usuario/:dni", (req, res) => {
+  const id = req.params.id;
+  knex.from("usuario").select("*").where('id', id)
+    .then(r => res.json(r))
+})
+app.get("/reporteincidentes", (req, res) => {
+  knex.from("reporteincidentes").select("*")
+    .then(r => res.json(r))
+})
+app.get("/reporteincidentes/:id", (req, res) => {
+  const id = req.params.id;
+  knex.from("reporteincidentes").select("*").where('id', id)
+    .then(r => res.json(r))
+})
+
 
 // app.post("/", (req, res) => {
 //   const id = req.body;
