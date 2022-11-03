@@ -19,7 +19,8 @@ router.get('/:id', (req, res) => {
 
 router.post('/', (req, res) => {
     try {
-        const data = req.body
+        const data = req.body;
+        //console.log(data);
         knex("eca")
             .insert(data)
             .then(r => {
